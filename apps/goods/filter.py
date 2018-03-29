@@ -19,6 +19,10 @@ class GoodsFilter(FilterSet):
     top_category = django_filters.NumberFilter(method='top_category_filter')
 
     def top_category_filter(self, queryset, name, value):
+        """
+        参数默认传递
+        对二级分类的过滤
+        """
         return queryset.filter(Q(category_id=value) | Q(category__parent_category_id=value)
                                | Q(category__parent_category__parent_category_id=value))
 

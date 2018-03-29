@@ -28,6 +28,8 @@ class CategorySerializer2(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     """
     商品类别序列化
+    三层嵌套是做商品目录结构的层次划分
+    many=True  表示有多个
     """
     sub_cat = CategorySerializer2(many=True)
 
