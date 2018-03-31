@@ -165,3 +165,9 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
 
 }
+
+# 手机号码正则表达式
+REGEX_MOBILE = "^1[345678]\d{9}$"
+
+# 云片网API_KEY
+API_KEY = "b138e4bca3779dc9a2ceb208b8e4614c"

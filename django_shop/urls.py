@@ -12,6 +12,7 @@ from rest_framework.authtoken import views
 from rest_framework_jwt.views import obtain_jwt_token
 
 from goods.views import GoodsListViewSet, CategoryViewSet
+from users.views import SmscodeViewset
 
 # Binding ViewSets to URLs explicitly
 # http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/
@@ -20,7 +21,9 @@ router = DefaultRouter()
 router.register(r'goods', GoodsListViewSet, base_name="goods")
 
 # 配置Categories的url
-router.register(r'categorys', CategoryViewSet, base_name="categorys")
+router.register(r'codes', SmscodeViewset, base_name="codes")
+
+router.register(r'goods', GoodsListViewSet, base_name="goods")
 
 # snippet_list = SnippetViewSet.as_view({
 #     'get': 'list',
