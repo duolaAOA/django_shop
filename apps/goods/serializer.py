@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from goods.models import Goods, GoodsCategory
+from goods.models import Goods, GoodsCategory, GoodsImage
 
 
 class CategorySerializer3(serializers.ModelSerializer):
@@ -38,10 +38,17 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class GoodsImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GoodsImage
+        fields = ("image", )
+
+
 class GoodsSerializer(serializers.ModelSerializer):
     # http://www.django-rest-framework.org/tutorial/1-serialization/#using-modelserializers
     # 模型管理自动填充映射，与自定定制model一样的，更简单
     category = CategorySerializer()     # 嵌套将category字段嵌入
+    images = GoodsImageSerializer(many=True)
 
     class Meta:
         model = Goods
