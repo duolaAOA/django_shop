@@ -50,11 +50,12 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         style={'input_type': 'password'}, help_text="密码", label="密码", write_only=True,
     )
 
-    def create(self, validated_data):
-        user = super(UserRegisterSerializer, self).create(validated_data=validated_data)
-        user.set_password(validated_data["password"])
-        user.save()
-        return user
+    # def create(self, validated_data):
+    # 使用信号处理密码加密逻辑
+    #     user = super(UserRegisterSerializer, self).create(validated_data=validated_data)
+    #     user.set_password(validated_data["password"])
+    #     user.save()
+    #     return user
 
     def validate_code(self, code):
         verify_records = VerifyCode.objects.filter(mobile=self.initial_data["username"]).order_by("-add_time")
