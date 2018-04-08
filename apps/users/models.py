@@ -11,7 +11,8 @@ class UserProfile(AbstractUser):
     """用户"""
     name = models.CharField(max_length=30, null=True, blank=True, verbose_name="姓名")
     birthday = models.DateField(null=True, blank=True, verbose_name="出生日期")
-    mobile = models.CharField(max_length=11, verbose_name="手机号")
+    # 设置为null 用户在post时做控制，如果提交的时候为空就可判断 否则就会出现异常
+    mobile = models.CharField(null=True, blank=True, max_length=11, verbose_name="手机号")
     gender = models.CharField(max_length=6, choices=(("male", u"男"), ("female", "女")), default="female", verbose_name="性别")
     email = models.EmailField(max_length=100, null=True, blank=True, verbose_name="邮箱")
 

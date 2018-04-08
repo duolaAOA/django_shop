@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
 ]
 
-AUTHENTICATION_BACKENDS = ['apps.users.views.CustomBackend', ]
+AUTHENTICATION_BACKENDS = ('users.views.CustomBackend', )
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

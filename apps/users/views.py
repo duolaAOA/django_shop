@@ -11,10 +11,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.conf import settings
 
-from .serializers import SmsSerializer
+from .serializers import SmsSerializer, UserRegisterSerializer
 from .models import VerifyCode
 from utils.yunpian import YunPian
 
+User = get_user_model()
 
 class CustomBackend(ModelBackend):
     """
@@ -23,11 +24,10 @@ class CustomBackend(ModelBackend):
     # http://python.usyiyi.cn/translate/django_182/topics/auth/customizing.html
     """
     def authenticate(self, request, username=None, password=None, **kwargs):
-        Usermodel = get_user_model()
         try:
             # user = Usermodel.objects.get(email=email)
-            user = Usermodel.objects.get(Q(username=username) | Q(mobile=username))   # 并集查询
-        except Usermodel.DoesNotExist:
+            user = User.objects.get(Q(username=username) | Q(mobile=username))   # 并集查询
+        except User.DoesNotExist:
             return None
         else:
             if user.check_password(password):
@@ -76,3 +76,10 @@ class SmscodeViewset(CreateModelMixin, viewsets.GenericViewSet):
             }, status=status.HTTP_201_CREATED
             )
 
+
+class UserViewset(CreateModelMixin, viewsets.GenericViewSet):
+    """
+    用户
+    """
+    serializer_class = UserRegisterSerializer
+    queryset = User.objects.all()
