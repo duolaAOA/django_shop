@@ -7,8 +7,8 @@ from .serializers import UserFavSerializer
 
 
 class UserFavViewset(mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
-        """
-        用户收藏功能
-        """
-        queryset = UserFav.objects.all()
-        serializer_class = UserFavSerializer
+    """
+    用户收藏功能
+    """
+    queryset = UserFav.objects.all()
+    serializer_class = UserFavSerializer
