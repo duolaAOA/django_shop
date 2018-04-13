@@ -11,7 +11,7 @@ from utils.permissions import IsOwnerOrReadOnly
 class UserFavViewset(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
     """
     用户收藏功能
-    """ 
+    """
     permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
     serializer_class = UserFavSerializer
 
