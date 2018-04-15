@@ -16,7 +16,7 @@ from django.conf import settings
 
 from rest_framework_jwt.serializers import jwt_encode_handler, jwt_payload_handler
 
-from .serializers import SmsSerializer, UserRegisterSerializer
+from .serializers import SmsSerializer, UserRegisterSerializer, UserDetailSerializer
 from .models import VerifyCode
 from utils.yunpian import YunPian
 
@@ -90,6 +90,14 @@ class UserViewset(CreateModelMixin, RetrieveModelMixin, viewsets.GenericViewSet)
     serializer_class = UserRegisterSerializer
     queryset = User.objects.all()
     authentication_classes = (JSONWebTokenAuthentication, authentication.SessionAuthentication, )
+
+    def get_serializer_class(self):
+        if self.action == "retrieve":
+            return UserDetailSerializer
+        elif self.action == "create":
+            return UserRegisterSerializer
+
+        return UserRegisterSerializer
 
     def get_permissions(self):
         if self.action == "retrieve":
