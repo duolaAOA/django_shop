@@ -5,9 +5,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.authentication import SessionAuthentication
 
-from .models import UserFav, UserLeavingMessage
+from .models import UserFav, UserLeavingMessage, UserAddress
 from .serializers import UserFavSerializer, UserFavDetailSerializer
-from .serializers import LeavingMessageSerializer
+from .serializers import LeavingMessageSerializer, AddressSerializer
 from utils.permissions import IsOwnerOrReadOnly
 
 
@@ -52,3 +52,25 @@ class LeavingMessageViewset(mixins.ListModelMixin, mixins.DestroyModelMixin, mix
 
     def get_queryset(self):
         return UserLeavingMessage.objects.filter(user=self.request.user)
+
+
+class AddressViewset(viewsets.ModelViewSet):
+    """
+    收货地址
+    list:
+        获取收货地址
+    create:
+        添加收货地址
+    update:
+        更新收货地址
+    delete:
+        删除收货地址
+    """
+    permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
+    authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
+    serializer_class = AddressSerializer
+
+    def get_queryset(self):
+        return UserAddress.objects.filter(user=self.request.user)
+
+
