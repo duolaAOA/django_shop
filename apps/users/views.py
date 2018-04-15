@@ -5,7 +5,7 @@ from random import choice
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
-from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin
+from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, UpdateModelMixin
 from rest_framework import permissions
 from rest_framework import authentication
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
@@ -83,7 +83,7 @@ class SmscodeViewset(CreateModelMixin, viewsets.GenericViewSet):
             )
 
 
-class UserViewset(CreateModelMixin, RetrieveModelMixin, viewsets.GenericViewSet):
+class UserViewset(CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, viewsets.GenericViewSet):
     """
     用户
     """
@@ -97,7 +97,7 @@ class UserViewset(CreateModelMixin, RetrieveModelMixin, viewsets.GenericViewSet)
         elif self.action == "create":
             return UserRegisterSerializer
 
-        return UserRegisterSerializer
+        return UserDetailSerializer
 
     def get_permissions(self):
         if self.action == "retrieve":
