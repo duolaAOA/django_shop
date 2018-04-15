@@ -13,7 +13,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SmscodeViewset, UserViewset
-from user_operation.views import UserFavViewset
+from user_operation.views import UserFavViewset, LeavingMessageViewset
 
 # Binding ViewSets to URLs explicitly
 # http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/
@@ -31,6 +31,9 @@ router.register(r'users', UserViewset, base_name="users")
 
 # 收藏
 router.register(r'userfavs', UserFavViewset, base_name="userfavs")
+
+# 留言
+router.register(r'messages', LeavingMessageViewset, base_name="messages")
 
 # snippet_list = SnippetViewSet.as_view({
 #     'get': 'list',
