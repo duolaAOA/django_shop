@@ -14,7 +14,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SmscodeViewset, UserViewset
 from user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
-from trade.views import ShoppingCartViewset
+from trade.views import ShoppingCartViewset, OrderViewset
 
 
 # Binding ViewSets to URLs explicitly
@@ -43,6 +43,8 @@ router.register(r'address', AddressViewset, base_name="address")
 # 购物车
 router.register(r'shopcarts', ShoppingCartViewset, base_name="shopcarts")
 
+# 订单相关
+router.register(r'orders', OrderViewset, base_name="orders")
 
 # snippet_list = SnippetViewSet.as_view({
 #     'get': 'list',
