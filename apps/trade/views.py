@@ -21,5 +21,7 @@ class ShoppingCartViewset(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
     authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication,)
     serializer_class = ShopCartSerializer
+    lookup_field = "goods_id"
 
-    queryset = ShoppingCart.objects.all()
+    def get_queryset(self):
+        return ShoppingCart.objects.filter(user=self.request.user)
