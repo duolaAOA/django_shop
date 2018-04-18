@@ -1,0 +1,42 @@
+[[source]]
+
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+mysqlclient = "*"
+django = "==1.11.7"
+django-crispy-forms = "*"
+django-import-export = "*"
+django-reversion = "*"
+django-formtools = "*"
+djangorestframework-jwt = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+django-filter = "*"
+future = "*"
+"httplib2" = "*"
+six = "*"
+xlwt = "*"
+xlsxwriter = "*"
+pillow = "*"
+markdown = "*"
+requests = "*"
+coreapi = "*"
+drf-extensions = "*"
+django-redis = "*"
+pycryptodome = "*"
+raven = "*"
+"urllib3" = "*"
+
+
+[dev-packages]
+
+
+
+[requires]
+
+python_version = "3.6"
