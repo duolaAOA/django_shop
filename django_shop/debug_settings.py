@@ -19,7 +19,7 @@ SECRET_KEY = 'o7!5d(hlh#e6t-)!2*j#$e&0$07#ot080tiaptvxa1g#fgbm-g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*", '140.143.18.253']
+ALLOWED_HOSTS = ["*"]
 
 # 重载User模型
 AUTH_USER_MODEL = "users.UserProfile"
@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_shop',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '1219960386',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
@@ -144,10 +144,9 @@ STATIC_URL = '/static/'
 
 # 上传文件访问地址
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/www/django_shop/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-STATIC_ROOT = '/var/www/django_shop/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # http://www.django-rest-framework.org/api-guide/authentication/

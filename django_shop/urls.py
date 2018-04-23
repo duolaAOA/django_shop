@@ -27,7 +27,7 @@ router.register(r'goods', GoodsListViewSet, base_name="goods")
 router.register(r'categorys', CategoryViewSet, base_name="categorys")
 
 # 配置codes 注册验证
-router.register(r'codes', GoodsListViewSet, base_name="codes")
+router.register(r'codes', SmscodeViewset, base_name="codes")
 
 router.register(r'users', UserViewset, base_name="users")
 

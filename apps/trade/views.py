@@ -34,7 +34,8 @@ class ShoppingCartViewset(viewsets.ModelViewSet):
         return ShoppingCart.objects.filter(user=self.request.user)
 
 
-class OrderViewset(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+class OrderViewset(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin,
+                   mixins.DestroyModelMixin, viewsets.GenericViewSet):
     """
     订单管理
     list:
