@@ -144,11 +144,11 @@ if __name__ == "__main__":
     alipay = AliPay(
 
         appid="2016091600521645",
-        app_notify_url="http://140.143.18.253/",
+        app_notify_url="http://140.143.18.253:8080/alipay/return/",
         app_private_key_path="../trade/keys/private_2048.txt",
         alipay_public_key_path="../trade/keys/alipay_key_2048.txt",  # 支付宝公钥，验证支付宝回传消息使用，不是你自己的公钥,
         debug=True,  # 默认False,
-        return_url="http://140.143.18.253:8000/"
+        return_url="http://140.143.18.253:8080/alipay/return/"
     )
 
     o = urlparse(return_url)
@@ -160,9 +160,10 @@ if __name__ == "__main__":
     print(alipay.verify(processed_query, ali_sign))
 
     url = alipay.direct_pay(
-        subject="测试订单",
-        out_trade_no="201804241232",
-        total_amount=19988
+        subject="超薄润滑杰士邦套装",
+        out_trade_no="201804241273721",
+        total_amount=0.08,
+        return_url="http://140.143.18.253:8080/alipay/return/",
     )
     re_url = "https://openapi.alipaydev.com/gateway.do?{data}".format(data=url)
     print(re_url)
