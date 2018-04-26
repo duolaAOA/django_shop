@@ -15,7 +15,7 @@ from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SmscodeViewset, UserViewset
 from user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
 from trade.views import ShoppingCartViewset, OrderViewset
-
+from trade.views import AlipayView
 
 # Binding ViewSets to URLs explicitly
 # http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/
@@ -69,6 +69,9 @@ urlpatterns = [
     url(r'^login/', obtain_jwt_token),
 
     # 生成DRF自动文档的配置
-    url(r'^docs/', include_docs_urls(title="django_shop"))
+    url(r'^docs/', include_docs_urls(title="django_shop")),
+
+    # 支付宝支付返回
+    url(r'^alipay/return/', AlipayView.as_view(), name="alipay")
 
 ]

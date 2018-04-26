@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = 'o7!5d(hlh#e6t-)!2*j#$e&0$07#ot080tiaptvxa1g#fgbm-g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -170,3 +170,8 @@ REGEX_MOBILE = "^1[345678]\d{9}$"
 
 # 云片网API_KEY
 API_KEY = "b138e4bca3779dc9a2ceb208b8e4614c"
+
+
+# 支付宝参数配置
+private_key_path = sys.path.insert(0, os.path.join(BASE_DIR, 'apps/trade/keys/private_2048.txt'))
+ali_pub_key_path = sys.path.insert(0, os.path.join(BASE_DIR, 'apps/trade/keys/alipay_key_2048.txtt'))
