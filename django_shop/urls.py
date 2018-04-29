@@ -1,16 +1,17 @@
 # -*-coding:utf-8 -*-
 
 from django.conf.urls import url, include
+from django.views.generic import TemplateView
 # from django.contrib import admin
 import xadmin
 
-from django_shop.settings import MEDIA_ROOT
-from django.views.static import serve
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from rest_framework_jwt.views import obtain_jwt_token
 
+from django_shop.settings import MEDIA_ROOT
+from django.views.static import serve
 from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SmscodeViewset, UserViewset
 from user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
@@ -55,6 +56,9 @@ urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     # 商品列表页
     url(r'^', include(router.urls)),
+
+    # 首页
+    url(r'^index/', TemplateView.as_view(template_name="index.html"), name="index"),
 
     # 配置上传文件的访问处理函数
     url('^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
