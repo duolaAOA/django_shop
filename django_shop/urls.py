@@ -12,7 +12,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 from django_shop.settings import MEDIA_ROOT
 from django.views.static import serve
-from goods.views import GoodsListViewSet, CategoryViewSet
+from goods.views import GoodsListViewSet, CategoryViewSet, BannerViewSet, HotSearchsViewset
 from users.views import SmscodeViewset, UserViewset
 from user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
 from trade.views import ShoppingCartViewset, OrderViewset
@@ -32,6 +32,8 @@ router.register(r'codes', SmscodeViewset, base_name="codes")
 
 router.register(r'users', UserViewset, base_name="users")
 
+router.register(r'hotsearchs', HotSearchsViewset, base_name="hotsearchs")
+
 # 收藏
 router.register(r'userfavs', UserFavViewset, base_name="userfavs")
 
@@ -47,6 +49,8 @@ router.register(r'shopcarts', ShoppingCartViewset, base_name="shopcarts")
 # 订单相关
 router.register(r'orders', OrderViewset, base_name="orders")
 
+# 轮播图
+router.register(r'banners', BannerViewSet, base_name="banners")
 # snippet_list = SnippetViewSet.as_view({
 #     'get': 'list',
 #     'post': 'create'

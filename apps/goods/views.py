@@ -10,9 +10,9 @@ from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import Goods, GoodsCategory
+from .models import Goods, GoodsCategory, HotSearchWords, Banner
 from .filter import GoodsFilter
-from .serializer import GoodsSerializer, CategorySerializer
+from .serializer import GoodsSerializer, CategorySerializer, HotWordsSerializer, BannerSerializer
 
 # Create your views here.
 
@@ -55,5 +55,21 @@ class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets
     # http://www.django-rest-framework.org/api-guide/generic-views/#retrievemodelmixin
     queryset = GoodsCategory.objects.filter()
     serializer_class = CategorySerializer
+
+
+class HotSearchsViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    获取热搜词列表
+    """
+    queryset = HotSearchWords.objects.all().order_by("-index")
+    serializer_class = HotWordsSerializer
+
+
+class BannerViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    获取轮播图
+    """
+    queryset = Banner.objects.all().order_by("index")
+    serializer_class = BannerSerializer
 
 

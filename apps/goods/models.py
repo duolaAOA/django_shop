@@ -141,4 +141,4 @@ class HotSearchWords(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return  self.keywords
+        return self.keywords
