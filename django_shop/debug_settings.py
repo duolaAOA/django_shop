@@ -20,7 +20,7 @@ SECRET_KEY = 'o7!5d(hlh#e6t-)!2*j#$e&0$07#ot080tiaptvxa1g#fgbm-g'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+INTERNAL_IPS = ('127.0.0.1',)
 # 重载User模型
 AUTH_USER_MODEL = "users.UserProfile"
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'django_filters',
+    'debug_toolbar',
 
 ]
 
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # 调试中间件
 ]
 # https://github.com/ottoyiu/django-cors-headers
 # django 跨域访问

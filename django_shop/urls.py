@@ -2,7 +2,7 @@
 
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
-# from django.contrib import admin
+from django.conf import settings
 import xadmin
 
 from rest_framework.documentation import include_docs_urls
@@ -56,6 +56,7 @@ router.register(r'banners', BannerViewSet, base_name="banners")
 #     'post': 'create'
 # })
 
+
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     # 商品列表页
@@ -83,3 +84,12 @@ urlpatterns = [
     url(r'^alipay/return/', AlipayView.as_view(), name="alipay")
 
 ]
+
+# 添加调试工具
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+
+print(urlpatterns)
