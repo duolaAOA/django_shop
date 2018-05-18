@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django_filters',
     'debug_toolbar',
 
+    'raven.contrib.django.raven_compat',
+
 ]
 
 AUTHENTICATION_BACKENDS = ('users.views.CustomBackend', )
@@ -179,3 +181,8 @@ API_KEY = "b138e4bca3779dc9a2ceb208b8e4614c"
 # 支付宝参数配置
 private_key_path = sys.path.insert(0, os.path.join(BASE_DIR, 'apps/trade/keys/private_2048.txt'))
 ali_pub_key_path = sys.path.insert(0, os.path.join(BASE_DIR, 'apps/trade/keys/alipay_key_2048.txt'))
+
+
+RAVEN_CONFIG = {
+    'dsn': 'http://22795986aa1c412fbaa4ab0f972b300d:d1b2aac7180a4f7da4c8b0373a3b5057@140.143.18.253:9000/2',
+}
